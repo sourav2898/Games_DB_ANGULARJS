@@ -14,10 +14,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   public games: Array<Game> | undefined;
   private routeSub: Subscription | undefined;
   private gameSub : Subscription | undefined;
+  public loading = false;
 
   constructor(private httpService: HttpService,private router: Router,  private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       if(params['game-search']) {
         this.searchGames('metacrit',params['game-search']);
@@ -26,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.searchGames('metacrit');
       }
     });
+    this.loading = false;
   }
 
   searchGames(sort:string, search?:string) : void {

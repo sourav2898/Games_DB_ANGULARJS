@@ -10,18 +10,22 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit, OnDestroy {
-  public gameRating = 0;
+  gameRating = 0;
   gameId: string;
   game: Game;
   routeSub: Subscription;
   gameSub: Subscription;
+  loading = false;
 
   constructor(private activatedRoute: ActivatedRoute, private httpService:HttpService) { }
 
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params : Params) => {
+      this.loading = true;
       this.gameId = params['id'];
       this.getGameDetails(this.gameId);
+
+      this.loading = false;
     })
   }
 

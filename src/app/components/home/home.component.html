@@ -13,7 +13,11 @@
   </mat-form-field>
 </div>
 
-<div class="games">
+<div class="loader" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="games" *ngIf="!loading">
   <ng-container *ngFor="let game of games">
   <div class="game" (click)="onGameClick(game.id)">
     <div class="game-thumb-container">

@@ -78,3 +78,46 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .game {
+    &-header {
+      &-title {
+        font-size: 20px;
+        line-height: 20px;
+      }
+
+      &-released-date {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      &-genres {
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .details {
+    ::ng-deep mwl-gauge {
+      width: 100px;
+      height: 100px;
+      display: block;
+      padding: 10px;
+    }
+  }
+
+  .game-gauge {
+    position: relative;
+    top: 150px;
+    right: 0;
+
+    &-label {
+      font-size: 20px;
+      color: #fff;
+      position: relative;
+      bottom: 10px;
+    }
+  }
+}
